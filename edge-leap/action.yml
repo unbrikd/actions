@@ -1,0 +1,19 @@
+# action.yml
+name: 'Edge Leap Action'
+description: 'The integration of Edge Leap with GitHub Actions'
+
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}

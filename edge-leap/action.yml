@@ -35,7 +35,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://etibacr.azurecr.io/elcli:latest'
+  image: 'docker://ghcr.io/unbrikd/elcli:latest'
   args:
     - release
     - --token="${{ inputs.token }}"

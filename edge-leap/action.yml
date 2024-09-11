@@ -38,12 +38,12 @@ runs:
   image: 'docker://ghcr.io/unbrikd/elcli:latest'
   args:
     - release
-    - --token='${{ inputs.token }}'
-    - --hub='${{ inputs.hub }}'
-    - --id='${{ inputs.id }}'
+    - --token=${{ inputs.token }}
+    - --hub=${{ inputs.hub }}
+    - --id=${{ inputs.id }}
     - --priority=${{ inputs.priority }}
-    - --target-condition='${{ inputs.target-condition }}'
-    - -m '${{ inputs.module-name }}'
-    - -i '${{ inputs.image-name }}'
-    - -c '${{ inputs.create-options }}'
-    - -s '${{ inputs.startup-order }}'
+    - --target-condition=${{ inputs.target-condition }}
+    - -m ${{ inputs.module-name }}
+    - -i ${{ inputs.image-name }}
+    - -c ${{ inputs.create-options }}
+    - -s ${{ inputs.startup-order }}

@@ -2,17 +2,47 @@ name: 'Edge Leap Action'
 description: 'The integration of Edge Leap with GitHub Actions'
 
 inputs:
-  who-to-greet:
-    description: 'Who to greet'
+  id:
+    description: 'Configuration ID'
     required: true
-    default: 'World'
-
-outputs:
-  time:
-    description: 'The time we greeted you'
+  priority:
+    description: 'Configuration priority'
+    required: true
+    default: "50"
+  target-condition:
+    description: 'Configuration target condition'
+    required: true
+  module-name:
+    description: 'Configuration module name'
+    required: true
+  image-name:
+    description: 'Configuration image name'
+    required: true
+  create-options:
+    description: 'Configuration create options'
+    required: false
+    default: ''
+  startup-order:
+    description: 'Configuration startup options'
+    required: false
+    default: "10"
+  hub:
+    description: 'IoT Hub where configuration will be applied'
+    required: true
+  token:
+    description: 'IoT Hub token'
+    required: true
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'etibacr.azurecr.io/elcli:latest'
   args:
-    - ${{ inputs.who-to-greet }}
+    - --token="${{ inputs.token }}"
+    - --hub="${{ inputs.hub }}"
+    - --id="${{ inputs.id }}"
+    - --priority="${{ inputs.priority }}"
+    - --target-condition="${{ inputs.target-condition }}"
+    - -m "${{ inputs.module-name }}"
+    - -i "${{ inputs.image-name }}"
+    - -c "${{ inputs.create-options }}"
+    - -s "${{ inputs.startup-order }}"

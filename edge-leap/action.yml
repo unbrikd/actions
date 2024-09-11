@@ -43,7 +43,7 @@ runs:
     - --id=${{ inputs.id }}
     - --priority=${{ inputs.priority }}
     - --target-condition=${{ inputs.target-condition }}
-    - -m ${{ inputs.module-name }}
-    - -i ${{ inputs.image-name }}
-    - -c ${{ inputs.create-options }}
-    - -s ${{ inputs.startup-order }}
+    - -m=${{ inputs.module-name }}
+    - -i=${{ inputs.image-name }}
+    - -c=${{ inputs.create-options }}
+    - -s=${{ inputs.startup-order }}

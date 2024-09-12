@@ -35,8 +35,8 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/unbrikd/elcli:latest'
-  pre-entrypoint: ./pre-entrypoint.sh
+  image: 'Dockerfile'
+  pre-entrypoint: /pre-entrypoint.sh
   args:
     - release
     - --token=${{ inputs.token }}

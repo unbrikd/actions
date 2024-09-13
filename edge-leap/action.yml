@@ -1,47 +1,53 @@
-name: 'Edge Leap Action'
-description: 'The integration of Edge Leap with GitHub Actions'
+name: "Edge Leap Action"
+description: "The integration of Edge Leap with GitHub Actions"
 
 inputs:
   action:
-    description: 'Action to perform'
-    required: true
-    default: 'release'
+    description: "Action to perform"
+    required: false
+    default: "release"
   id:
-    description: 'Configuration ID'
+    description: "Configuration ID"
     required: true
   priority:
-    description: 'Configuration priority'
+    description: "Configuration priority"
     required: true
     default: "50"
   target-condition:
-    description: 'Configuration target condition'
+    description: "Configuration target condition"
     required: true
   module-name:
-    description: 'Configuration module name'
+    description: "Configuration module name"
     required: true
   image:
-    description: 'Configuration image name'
+    description: "Configuration image name"
     required: true
   create-options:
-    description: 'Configuration create options'
+    description: "Configuration create options"
     required: false
-    default: ''
+    default: ""
   startup-order:
-    description: 'Configuration startup options'
+    description: "Configuration startup options"
     required: false
     default: "10"
   hub:
-    description: 'IoT Hub where configuration will be applied'
+    description: "IoT Hub where configuration will be applied"
     required: true
   token:
-    description: 'IoT Hub token'
+    description: "IoT Hub token"
     required: true
 
 runs:
-  using: 'docker'
-  image: 'docker://ghcr.io/unbrikd/elcli:latest'
+  using: "docker"
+  image: "docker://ghcr.io/unbrikd/elcli:0.1.0@sha256:16acc2b6d6ef0f14c3327531a494943efe86f3daea3d763f82d5731c14b47312"
   args:
-    - ${{ inputs.action }} --token=${{ inputs.token }} --hub=${{ inputs.hub }} --id=${{ inputs.id }}
-    - -m=${{ inputs.module-name }} -i=${{ inputs.image }} -c=${{ inputs.create-options }}
-    - --priority=${{ inputs.priority }} -s=${{ inputs.startup-order }} 
+    - ${{ inputs.action }}
+    - --token=${{ inputs.token }}
+    - --hub=${{ inputs.hub }}
+    - --id=${{ inputs.id }}
+    - -m=${{ inputs.module-name }}
+    - --image=${{ inputs.image }}
+    - --create-options=${{ inputs.create-options }}
+    - --priority=${{ inputs.priority }}
+    - --startup-order=${{ inputs.startup-order }}
     - --target-condition=${{ inputs.target-condition }}

@@ -11,7 +11,7 @@ inputs:
     required: true
   priority:
     description: "Configuration priority"
-    required: true
+    required: false
     default: "50"
   target-condition:
     description: "Configuration target condition"
@@ -39,7 +39,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/unbrikd/elcli:0.1.0@sha256:16acc2b6d6ef0f14c3327531a494943efe86f3daea3d763f82d5731c14b47312"
+  image: "docker://ghcr.io/unbrikd/elcli:0.1.0@sha256:6d14c03f12137eb1fa0b0513c251aa2342b119b78a9e92b7bd79c1b8eb589e84"
   args:
     - ${{ inputs.action }}
     - --token=${{ inputs.token }}

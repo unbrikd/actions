@@ -55,4 +55,4 @@ runs:
     - --priority=${{ inputs.priority }}
     - --startup-order=${{ inputs.startup-order }}
     - --target-condition=${{ inputs.target-condition }}
-    - --env ${{ inputs.env }}
+    - --env ${{ inputs.runtime-env }}

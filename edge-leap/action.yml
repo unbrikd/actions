@@ -30,7 +30,7 @@ inputs:
     description: "Order in which the module will start in relation to other modules in the same configuration"
     required: false
     default: "10"
-  env:
+  runtime-env:
     description: "Environment variables to be set at module runtime"
     required: false
     default: ""

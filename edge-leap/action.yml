@@ -1,5 +1,5 @@
-name: "Edge Leap Action"
-description: "The integration of Edge Leap with GitHub Actions"
+name: "Unbrikd Actions - Edge Leap"
+description: "Use Edge Leap in your GitHub workflows to handle module releases on Azure IoT Edge devices."
 
 inputs:
   action:
@@ -17,24 +17,28 @@ inputs:
     description: "Configuration target condition"
     required: true
   module-name:
-    description: "Configuration module name"
+    description: "Name of the module to be set in the configuration (must be in kebab-case)"
     required: true
   image:
-    description: "Configuration image name"
+    description: "Valid URL to a Docker image including the tag"
     required: true
   create-options:
-    description: "Configuration create options"
+    description: "A valid JSON string with the create options to apply on module start"
     required: false
     default: ""
   startup-order:
-    description: "Configuration startup options"
+    description: "Order in which the module will start in relation to other modules in the same configuration"
     required: false
     default: "10"
+  env:
+    description: "Environment variables to be set at module runtime"
+    required: false
+    default: ""
   hub:
     description: "IoT Hub where configuration will be applied"
     required: true
   token:
-    description: "IoT Hub token"
+    description: "IoT Hub token to authenticate the requests"
     required: true
 
 runs:
@@ -45,9 +49,10 @@ runs:
     - --token=${{ inputs.token }}
     - --hub=${{ inputs.hub }}
     - --id=${{ inputs.id }}
-    - -m=${{ inputs.module-name }}
+    - --module-name=${{ inputs.module-name }}
     - --image=${{ inputs.image }}
     - --create-options=${{ inputs.create-options }}
     - --priority=${{ inputs.priority }}
     - --startup-order=${{ inputs.startup-order }}
     - --target-condition=${{ inputs.target-condition }}
+    - --env ${{ inputs.env }}

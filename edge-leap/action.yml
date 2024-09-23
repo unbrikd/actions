@@ -43,7 +43,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/unbrikd/elcli:0.2.1@sha256:33b9b7fe486539e89941acf062002e083e7f8f1c4c8b2beaa97c62dc80e3f85f"
+  image: "docker://ghcr.io/unbrikd/elcli:0.2.1@sha256:d6701d6a777bc047f4a2b86f471e9c27ace96dc2d18c0de9303b76c4239139ac"
   args:
     - ${{ inputs.action }}
     - --token=${{ inputs.token }}

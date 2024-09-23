@@ -25,7 +25,7 @@ Consider the following example to use the `elcli` action:
 
 ```yaml
 name: Send module configuration to IoT Hub
-uses: unbrikd/actions/elcli@030d66be634c9f281ca74c3ffd9c090c0ac71a3d
+uses: unbrikd/actions/elcli@030d66be634c9f281ca74c3ffd9c090c0ac71a3d # Always use a commit hash from the master branch (stable) to ensure reproducibility.
 with:
 with:
   token: ${{ env.AZURE_TOKEN }}

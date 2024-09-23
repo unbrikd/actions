@@ -1,0 +1,58 @@
+name: "Unbrikd Actions - Edge Leap Client"
+description: "Use Edge Leap client in your GitHub workflows to handle module releases on Azure IoT Edge devices."
+
+inputs:
+  action:
+    description: "Action to perform"
+    required: false
+    default: "release"
+  id:
+    description: "Configuration ID"
+    required: true
+  priority:
+    description: "Configuration priority"
+    required: false
+    default: "50"
+  target-condition:
+    description: "Configuration target condition"
+    required: true
+  module-name:
+    description: "Name of the module to be set in the configuration (must be in kebab-case)"
+    required: true
+  image:
+    description: "Valid URL to a Docker image including the tag"
+    required: true
+  create-options:
+    description: "A valid JSON string with the create options to apply on module start"
+    required: false
+    default: ""
+  startup-order:
+    description: "Order in which the module will start in relation to other modules in the same configuration"
+    required: false
+    default: "10"
+  runtime-env:
+    description: "Environment variables to be set at module runtime"
+    required: false
+    default: ""
+  hub:
+    description: "IoT Hub where configuration will be applied"
+    required: true
+  token:
+    description: "IoT Hub token to authenticate the requests"
+    required: true
+
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/unbrikd/elcli:0.2.1@sha256:d6701d6a777bc047f4a2b86f471e9c27ace96dc2d18c0de9303b76c4239139ac"
+  args:
+    - ${{ inputs.action }}
+    - --token=${{ inputs.token }}
+    - --hub=${{ inputs.hub }}
+    - --id=${{ inputs.id }}
+    - --module-name=${{ inputs.module-name }}
+    - --image=${{ inputs.image }}
+    - --create-options=${{ inputs.create-options }}
+    - --priority=${{ inputs.priority }}
+    - --startup-order=${{ inputs.startup-order }}
+    - --target-condition=${{ inputs.target-condition }}
+    - --env=${{ inputs.runtime-env }}

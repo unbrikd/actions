@@ -1,5 +1,5 @@
-name: "Unbrikd Actions - Edge Leap"
-description: "Use Edge Leap in your GitHub workflows to handle module releases on Azure IoT Edge devices."
+name: "Unbrikd Actions - Edge Leap Client"
+description: "Use Edge Leap client in your GitHub workflows to handle module releases on Azure IoT Edge devices."
 
 inputs:
   action:
